@@ -37,6 +37,8 @@ export const update = asyncHandler(async (req, res) => {
   };
 
   Transaction.findOneAndUpdate(filter, update, options, function (err, trans) {
+    console.log("updated: ", trans);
+    if (err) console.log("update error:", err);
     res.json({ transactions: trans });
   });
 });

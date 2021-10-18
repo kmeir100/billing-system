@@ -4,8 +4,8 @@ import PageHeader from "./PageHeader";
 const MainScreen = () => {
   return (
     <div>
-      <PageHeader class="page-header" />
-      <TransactionsTable class="all-transactions" />
+      <PageHeader className="page-header" />
+      <TransactionsTable className="all-transactions" />
     </div>
   );
 };

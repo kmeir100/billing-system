@@ -1,22 +1,35 @@
 import ActionButtons from "./ActionButtons";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import config from "../configurations/config.json";
 
 const TableBody = function () {
   const [transactions, setTransactions] = useState([]);
 
-  const getAllTransactions = function () {
+  // useEffect(() => {
+  //   getAllTransactions();
+  // });
+
+  const data = useMemo(
+    () => ({
+      is_fetched: false,
+    }),
+    []
+  ); // <- dependencies
+  useEffect(() => {
+    console.log("a");
+    getAllTransactions();
+  }, [data]);
+
+  const reload = () => getAllTransactions();
+
+  const getAllTransactions = async function () {
     const url = `${config.SERVER_URL}:${config.SERVER_PORT}/${config.TRANSACTION_API.VIEW}`;
-    axios.get(url).then(
+    await axios.get(url).then(
       (result) => setTransactions(result.data.transactions),
       (err) => console.log(err)
     );
   };
-
-  useEffect(() => {
-    getAllTransactions();
-  }, []);
 
   return (
     <tbody>
@@ -30,7 +43,7 @@ const TableBody = function () {
           <td>{new Date(trans.date).toLocaleString()}</td>
           <td>{trans.final_price}</td>
           <td>{trans.discount || "0"}%</td>
-          <ActionButtons transaction={trans} />
+          <ActionButtons onFinish={reload} transaction={trans} number={i} />
         </tr>
       ))}
     </tbody>
