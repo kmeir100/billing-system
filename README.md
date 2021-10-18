@@ -19,6 +19,8 @@ In this task I focus on customers and transaction entities.
 `id, customer_email, name, phone, item_name, date, final_price, discount`
 
 # How to Run
+1. Run mongoDB server (`mongod` on Mac)
+2. Run the following:
 ```shell
 git clone https://github.com/kmeir100/billing-system.git
 cd billing-system/
@@ -28,9 +30,13 @@ npm install
 cd ..
 npm run all
 ```
+3. Import data (from data.json) to `customers` collection on db
 
 # TODO
-- Input Validation.  
+- Fix a bug where the main page isn't re-rendering when adding a new transaction. (Currently need to refresh manually)
+- Validation:
+   -  Clien side validation - validate all inputs in the Modals Form: Add and Update.
+   -  Server side validation - validate the params on the requests.
 - When deleteing transaction - do not delete from DB, instead add a `deleted` flag.  
 - Return relevant response to client:
   - For success return `200 ok`
