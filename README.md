@@ -23,6 +23,9 @@ In this task I focus on customers and transaction entities.
 git clone https://github.com/kmeir100/billing-system.git
 cd billing-system/
 npm install
+cd frontend/
+npm install
+cd ..
 npm run all
 ```
 
