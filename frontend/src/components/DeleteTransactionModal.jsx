@@ -2,14 +2,14 @@ import axios from "axios";
 import config from "../configurations/config.json";
 
 const DeleteTransactionModal = function (props) {
-  const deleteTransaction = () => {
+  const deleteTransaction = async function () {
     const url = `${config.SERVER_URL}:${config.SERVER_PORT}/${config.TRANSACTION_API.DELETE}`;
     const params = {
       id: props.transaction._id,
     };
 
     axios.defaults.headers.post["Content-Type"] = "application/json";
-    axios.post(url, params).then(
+    await axios.post(url, params).then(
       (result) => console.log("result:", result),
       (err) => console.log(err)
     );
