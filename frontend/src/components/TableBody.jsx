@@ -1,25 +1,14 @@
 import ActionButtons from "./ActionButtons";
 import axios from "axios";
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import config from "../configurations/config.json";
 
 const TableBody = function () {
   const [transactions, setTransactions] = useState([]);
 
-  // useEffect(() => {
-  //   getAllTransactions();
-  // });
-
-  const data = useMemo(
-    () => ({
-      is_fetched: false,
-    }),
-    []
-  ); // <- dependencies
   useEffect(() => {
-    console.log("a");
     getAllTransactions();
-  }, [data]);
+  }, []);
 
   const reload = () => getAllTransactions();
 
