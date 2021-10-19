@@ -33,7 +33,7 @@ npm run all
 3. Import data (from data.json) to `customers` collection on db
 
 # TODO
-- Fix a bug where the main page isn't re-rendering when adding a new transaction. (Currently need to refresh manually)
+- Fix a bug where the main page isn't re-rendering *only* on adding a new transaction. (Currently need to refresh manually)
 - Validation:
    -  Clien side validation - validate all inputs in the Modals Form: Add and Update.
    -  Server side validation - validate the params on the requests.
